@@ -41,6 +41,5 @@ class TestConstructor:
             print("Страница Конструктор в Личном кабинете обнаружена, после перехода видим меню конструктора Соберите бургер")
         else:
             print("Вход в на страницу Конструктор не выполнен")
-#driver.implicitly_wait(5)
-#driver.find_element(*TestLocators.STELLA_BURGER_LINK).click()
+
         driver.quit()
