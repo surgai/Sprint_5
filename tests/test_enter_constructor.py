@@ -3,7 +3,7 @@ from selenium import webdriver
 from elements_to_find import TestLocators
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
-class TestConstructor:
+class TestEnterConstructor:
     def test_enter_constructor(self):
 #1 Проверим вход через кнопку Войти в аккаунт
         driver = webdriver.Chrome()
