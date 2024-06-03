@@ -1,51 +1,36 @@
-import pytest
 from selenium import webdriver
-from selenium.common.exceptions import NoSuchElementException
+import time
 from elements_to_find import TestLocators
 import re
-
-@pytest.mark.usefixtures("generate_data")
-class TestRegistration:
+import secrets
+import string
+class TestRegistration():
     def test_registration(self):
         driver = webdriver.Chrome()
         chrome_options = webdriver.ChromeOptions()
         chrome_options.add_argument('--headless')
         chrome_options.add_argument('--window-size=1920,1080')
         driver.get("https://stellarburgers.nomoreparties.site/register")
-
+        assert "stellarburgers.nomoreparties.site" in driver.current_url
 # Найди поле "Имя" и заполни его
+        alphabet = string.ascii_letters + string.digits
+        passw = ''.join(secrets.choice(alphabet) for i in range(3))
+        login = f"Nuykin_9_{passw}@ya.ru"
         name = driver.find_element(*TestLocators.NAME_REGISTRATION_FIELD)
         name.send_keys("Денис")
         assert name.get_attribute('value') != ''
-
 # Найди поле "Email" и заполни его
         email = driver.find_element(*TestLocators.EMAIL_REGISTRATION_FIELD)
-        email.send_keys(self.login)
+        email.send_keys(login)
         assert re.match('(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)', email.get_attribute('value'))
-
 # Найди поле "Пароль" и заполни его
         password = driver.find_element(*TestLocators.PASSWORD_REGISTRATION_FIELD)
-        password.send_keys(self.password)
-        assert len(password.get_attribute('value')) > 5
-
+        password.send_keys(passw)
 # Нажми кнопку Зарегистрироваться
         registration = driver.find_element(*TestLocators.REGISTRATION_REGISTRATION_BUTTON)
         registration.click()
-#Проверка валидности введенного пароля и  наличия пользователя в системе
-        try:
-            driver.implicitly_wait(5)
-            driver.find_element(*TestLocators.WRONGPASS_REGISTARTION_TEXT)
-        except NoSuchElementException:
-            print("Пароль валидный")
-        else:
-            print("Пароль не валидный")
-
-        try:
-            driver.implicitly_wait(5)
-            driver.find_element(*TestLocators.EXISTUSER_REGISTRATION_TEXT)
-        except NoSuchElementException:
-            print("Регистрация выполнена")
-        else:
-            print("Такой пользователь уже существует")
-
+#при неверном пароле проверяю что есть предупреждение с текстом Некорректный пароль
+        time.sleep(5)
+        attention = driver.find_element(*TestLocators.WRONGPASS_REGISTARTION_TEXT).text
+        assert attention == 'Некорректный пароль'
         driver.quit()
