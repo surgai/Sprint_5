@@ -1,4 +1,4 @@
-from selenium import webdriver
+
 from elements_to_find import TestLocators
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
