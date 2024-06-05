@@ -1,4 +1,4 @@
-from selenium import webdriver
+
 import re
 import secrets
 import string
@@ -9,9 +9,6 @@ import pytest
 @pytest.mark.usefixtures("chrome_browser")
 class TestRegistration:
     def test_registration(self):
-        chrome_options = webdriver.ChromeOptions()
-        chrome_options.add_argument('--headless')
-        chrome_options.add_argument('--window-size=1920,1080')
         self.driver.get("https://stellarburgers.nomoreparties.site/register")
         assert "stellarburgers.nomoreparties.site" in self.driver.current_url
 # Найди поле "Имя" и заполни его
@@ -34,4 +31,3 @@ class TestRegistration:
 
         attention = WebDriverWait(self.driver, 15).until(expected_conditions.presence_of_element_located((TestLocators.WRONGPASS_REGISTARTION_TEXT))).text
         assert attention == 'Некорректный пароль'
-        self.driver.quit()

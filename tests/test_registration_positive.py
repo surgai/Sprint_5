@@ -1,4 +1,4 @@
-from selenium import webdriver
+
 from elements_to_find import TestLocators
 import re
 import secrets
@@ -10,9 +10,6 @@ import pytest
 class TestRegistration():
     def test_registration(self):
 
-        chrome_options = webdriver.ChromeOptions()
-        chrome_options.add_argument('--headless')
-        chrome_options.add_argument('--window-size=1920,1080')
         self.driver.get("https://stellarburgers.nomoreparties.site/register")
         assert "stellarburgers.nomoreparties.site" in self.driver.current_url
 
@@ -41,4 +38,3 @@ class TestRegistration():
 #при неверном пароле проверяю что есть предупреждение с текстом Некорректный пароль
         enter_button = WebDriverWait(self.driver, 15).until(expected_conditions.element_to_be_clickable((TestLocators.ЕNTER_AFTER_REG))).text
         assert enter_button == 'Войти'
-        self.driver.quit()

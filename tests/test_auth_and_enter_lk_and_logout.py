@@ -25,7 +25,7 @@ class TestAuthLogOut:
         assert WebDriverWait(self.driver, 15).until(expected_conditions.element_to_be_clickable((TestLocators.EXIT_IN_LK_TEXT))).text == "Выход"
         WebDriverWait(self.driver, 15).until(expected_conditions.presence_of_element_located((TestLocators.LOGOUT_BUTTON))).click()
         assert WebDriverWait(self.driver, 15).until(expected_conditions.element_to_be_clickable((TestLocators.ENTER_BUTTON_TEXT))).text == "Вход"
-        self.driver.quit()
+
     def test_in_lk(self):
 #2 Проверим авторизацию через кнопку Личный кабинет
         self.driver.get("https://stellarburgers.nomoreparties.site")
@@ -46,7 +46,7 @@ class TestAuthLogOut:
         assert WebDriverWait(self.driver, 15).until(expected_conditions.element_to_be_clickable((TestLocators.EXIT_IN_LK_TEXT))).text == "Выход"
         WebDriverWait(self.driver, 15).until(expected_conditions.presence_of_element_located((TestLocators.LOGOUT_BUTTON))).click()
         assert WebDriverWait(self.driver, 15).until(expected_conditions.element_to_be_clickable((TestLocators.ENTER_BUTTON_TEXT))).text == "Вход"
-        self.driver.quit()
+
     def test_in_registration(self):
 #3 Проверим авторизацию через кнопку в форме регистрации
 
@@ -69,7 +69,7 @@ class TestAuthLogOut:
         assert WebDriverWait(self.driver, 15).until(expected_conditions.element_to_be_clickable((TestLocators.EXIT_IN_LK_TEXT))).text == "Выход"
         WebDriverWait(self.driver, 15).until(expected_conditions.presence_of_element_located((TestLocators.LOGOUT_BUTTON))).click()
         assert WebDriverWait(self.driver, 15).until(expected_conditions.element_to_be_clickable((TestLocators.ENTER_BUTTON_TEXT))).text == "Вход"
-        self.driver.quit()
+
     def test_in_forgot_password_form(self):
 # Вход через кнопку в форме восстановления пароля
 
@@ -93,4 +93,3 @@ class TestAuthLogOut:
         assert WebDriverWait(self.driver, 15).until(expected_conditions.element_to_be_clickable((TestLocators.EXIT_IN_LK_TEXT))).text == "Выход"
         WebDriverWait(self.driver, 15).until(expected_conditions.presence_of_element_located((TestLocators.LOGOUT_BUTTON))).click()
         assert WebDriverWait(self.driver, 15).until(expected_conditions.element_to_be_clickable((TestLocators.ENTER_BUTTON_TEXT))).text == "Вход"
-        self.driver.quit()

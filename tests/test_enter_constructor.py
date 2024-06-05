@@ -1,5 +1,4 @@
 import pytest
-from selenium import webdriver
 from elements_to_find import TestLocators
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
@@ -8,9 +7,6 @@ class TestEnterConstructor:
     def test_enter_constructor(self):
 #1 Проверим вход через кнопку Войти в аккаунт
 
-        chrome_options = webdriver.ChromeOptions()
-        chrome_options.add_argument('--headless')
-        chrome_options.add_argument('--window-size=1920,1080')
         self.driver.get("https://stellarburgers.nomoreparties.site")
         self.driver.find_element(*TestLocators.ENTER_TO_ACCOUNT_BUTTON).click()
 # Ввод Email
@@ -22,10 +18,7 @@ class TestEnterConstructor:
 # Нажми кнопку Войти
         WebDriverWait(self.driver, 15).until(expected_conditions.presence_of_element_located(TestLocators.PUSH_ENTER_BUTTON)).click()
 
-
 # Проверяю переход по клику на «Личный кабинет».
         WebDriverWait(self.driver, 15).until(expected_conditions.element_to_be_clickable(TestLocators.LK_BUTTON)).click()
         WebDriverWait(self.driver, 15).until(expected_conditions.element_to_be_clickable(TestLocators.BUILD_BURGER_CLICK)).click()
         assert WebDriverWait(self.driver, 15).until(expected_conditions.presence_of_element_located((TestLocators.TEST_BURGER))).text == "Соберите бургер"
-
-        self.driver.quit()
