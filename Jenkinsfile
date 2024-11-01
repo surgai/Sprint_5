@@ -1,10 +1,10 @@
 pipeline {
-    agent any
+    agent { docker { image 'python:latest' } }
 
     stages {
         stage('Подготовка') {
             steps {
-               sh 'whoami'
+                sh "python --version"
             }
         }
         stage('Сборка') {
