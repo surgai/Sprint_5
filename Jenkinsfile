@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Подготовка') {
             steps {
-                whoami
+               sh whoami
             }
         }
         stage('Сборка') {
