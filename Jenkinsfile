@@ -1,1 +1,2 @@
-echo "123"
+def str = "Hello world"
+def num =0
