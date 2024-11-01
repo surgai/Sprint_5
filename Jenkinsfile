@@ -1,2 +1,11 @@
-def str = "Hello world"
-def num =0
+// Jenkinsfile (Declarative Pipeline)
+pipeline {
+  agent any
+  stages {
+    stage('Stage 1') {
+      steps {
+        echo 'Hello world!'
+      }
+    }
+  }
+}
