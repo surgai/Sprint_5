@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Подготовка') {
             steps {
-                sh "python --version && whoami"
+                whoami
             }
         }
         stage('Сборка') {
