@@ -1,11 +1,21 @@
-// Jenkinsfile (Declarative Pipeline)
 pipeline {
-  agent any
-  stages {
-    stage('Stage 1') {
-      steps {
-        echo 'Hello world!'
-      }
+    agent any
+
+    stages {
+        stage('Сборка') {
+            steps {
+                echo 'Выполняем команды для сборки'
+            }
+        }
+        stage('Тестирование') {
+            steps {
+                echo 'Тестируем нашу сборку'
+            }
+        }
+        stage('Развертывание') {
+            steps {
+                echo 'Переносим код в рабочую среду или создаем артефакт'
+            }
+        }
     }
-  }
 }
